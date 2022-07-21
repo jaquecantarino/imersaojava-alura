@@ -1,4 +1,6 @@
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -50,12 +52,24 @@ public class App {
 		//criei uma variavel para contar
 		int contador=1;
 		
-		
+		// traz o gerador de stickers
+		var gerador = new GeradorStickers();
 		//para exibir as informações manipuladas, vamos criar uma lista filtrando as infos que queremos.
 		for (Map<String, String> filme : listaDeFilmes) {
+			
+			/* adicionando a parte de criar stickers */
+			String urlImagem = filme.get("image"); /* pega o url da imagem e armazena na String */
+			String titulo = filme.get("title"); /* pega o titulo para salvar a figurinha */ /* figurinha salva na pasta saida da raíz*/
+			
+			
+			/* cria o Input Stream para ser usado la no GeradorStickers */
+			InputStream inputStream = new URL(urlImagem).openStream();
+			String nomeArquivo = titulo + ".png"; /* cria o nome do arquivo da imagem para salvar*/
+			
+			
 			System.out.println(contador+"º"); /* exibe a posição do filme */
-			System.out.println(filme.get("title")); /* usamos o mesmo nome da identificação que está nos dados que estamos usamos */
-            System.out.println(filme.get("image"));
+			System.out.println(titulo); /* usamos o mesmo nome da identificação que está nos dados que estamos usamos */
+            System.out.println(urlImagem);
             System.out.println(filme.get("imDbRating"));
             System.out.println();	
             contador++; /* soma 1 ao contado de posição ao final de cada exibição */
