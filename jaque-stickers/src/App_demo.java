@@ -18,7 +18,7 @@ public class App_demo {
 		// exibir e manipular as informações do jeito que quisermos.
 		
 		//Criar uma variavel com a url que vamos consumir
-		String url = "https://alura-filmes.herokuapp.com/conteudos";
+		String url = "https://mocki.io/v1/9a7c1ca9-29b4-4eb3-8306-1adb9d159060";
 		
 		//vamos criar uma URI para usa-la no request
 		URI endereco = URI.create(url);
